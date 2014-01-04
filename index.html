@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>RWD-Foundation</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.parallax-1.1.3.js"></script>
+    <script type="text/javascript" src="scripts/jquery.localscroll-1.2.7-min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.scrollTo-1.4.2-min.js"></script>
+    <script type="text/javascript" src="scripts/processing-1.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#nav').localScroll(800);
+
+            //.parallax(xPosition, speedFactor, outerHeight) options:
+            //xPosition - Horizontal position of the element
+            //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
+            //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+            $('#intro').parallax("50%", 0.1);
+            $('#second').parallax("50%", 0.1);
+            $('.bg').parallax("50%", 0.4);
+            $('#third').parallax("50%", 0.3);
+            $('#fifth').parallax("50%", 0.3);
+
+            $('#start').parallax("50%", 0.1);
+            $('#intro-rwd').parallax("50%", 0.1);
+            $('.arrow').parallax("50%", 0.3);
+            $('#how-rwd').parallax("50%", 0.1);
+            $('#use-framework').parallax("50%", 0.1);
+            $('.foundation-logo').parallax("50%", 0.4);
+            $('#intro-foundation').parallax("50%",0.1);
+            $('.mobile-first').parallax("50%", 0.2);
+            $('#browser-support').parallax("50%", 0.1);
+            $('.ie').parallax("50%", 0.3);
+            $('#css-foundation').parallax("50%", 0.1);
+            $('#sass-foundation').parallax("50%", 0.1);
+            $('.pc-blue').parallax("50%", 0.4);
+            $('#intro-sass').parallax("50%", 0.1);
+            $('.tree-man').parallax("50%", 0.4);
+            $('#conclusion').parallax("50%", 0.1);
+            $('#use-icon').parallax("50%", 0.1);
+
+            $('.mobile-first').bind("click",function(){
+                $('#intro-foundation .important').slideDown("slow");
+            })
+
+        })
+    </script>
+    <script type="text/processing" data-processing-target="mycanvas">
+        ArrayList Ps;
+
+        void setup(){
+        size(window.innerWidth-20,700);
+        frameRate(30);
+        Ps=new ArrayList();
+        for(int i=0;i<100;i++){
+        Ps.add(new Particle(random(width),random(height)));
+        }
+        }
+
+        void draw(){
+        background(random(10));
+        for(int i=0;i<Ps.size();i++){
+        float Px1=((Particle)Ps.get(i)).Px;
+        float Py1=((Particle)Ps.get(i)).Py;
+
+        ((Particle)Ps.get(i)).Update_And_Draw((window.innerWidth/2)+(random(100)-random(100))*10,350+(random(200)-random(200)));
+        for(int j=0;j<Ps.size();j++){
+        float Px2=((Particle)Ps.get(j)).Px;
+        float Py2=((Particle)Ps.get(j)).Py;
+        if(Distance(Px1,Py1,Px2,Py2)>400){
+        if(random(100)>99){
+        strokeWeight(1);
+        stroke(random(255),random(255),random(255),100);
+        line(Px1,Py1,Px2,Py2);
+        }
+        }
+
+        }
+        }
+        String textstring = "The End";
+        float twidth = textWidth(textstring);
+        textSize(50);
+        text(textstring, (width-twidth)-150, height-100);
+
+        String textstring = "》》》(icon)";
+        float twidth = textWidth(textstring);
+        textSize(15);
+        text(textstring, (width-100), height-80);
+        }
+        float Distance(float Px1,float Py1,float Px2, float Py2){
+        return sqrt(sq(Px1-Px2)+sq(Py1-Py2));
+        }
+        class Particle{
+        float Px,Py,Vx,Vy,Ax,Ay;
+        Particle(float Enter_Px,float Enter_Py){
+        Px=Enter_Px;
+        Py=Enter_Py;
+        Vx=0;
+        Vy=0;
+        Ax=0;
+        Ay=0;
+        }
+        void Update_And_Draw(float Enter_X,float Enter_Y){
+        if(Px<Enter_X) {
+        Ax=0.1;
+        }
+        else{
+        Ax=-0.1;
+        }
+        if(Py<Enter_Y) {
+        Ay=0.1;
+        }
+        else{
+        Ay=-0.1;
+        }
+        if((Px<Enter_X) && (Px+Vx>Enter_X)){
+        Vx=Vx*0.85;
+        }
+        if((Px>Enter_X) && (Px+Vx<Enter_X)){
+        Vx=Vx*0.85;
+        }
+        if((Py<Enter_Y) && (Py+Vy>Enter_Y)){
+        Vy=Vy*0.85;
+        }
+        if((Py>Enter_Y) && (Py+Vy<Enter_Y)){
+        Vy=Vy*0.85;
+        }
+        Vx=Vx+Ax;
+        Vy=Vy+Ay;
+        Px=Px+Vx;
+        Py=Py+Vy;
+        stroke(random(255),random(255),random(255),80);
+        strokeWeight(random(80));
+        point(Px,Py);
+        }
+        }
+    </script>
+</head>
+
+<body>
+
+<ul id="nav">
+    <li><a href="#start" title="start"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#intro-rwd" title="intro-rwd"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#how-rwd" title="how-rwd"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#use-framework" title="use-framework"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#intro-foundation" title="intro-foundation"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#browser-support" title="browser-support"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#css-foundation" title="css-foundation"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#sass-foundation" title="sass-foundation"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#intro-sass" title="use-icon"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#conclusion" title="conclusion"><img src="images/dot.png" alt="Link"/></a></li>
+    <li><a href="#use-icon" title="use-icon"><img src="images/dot.png" alt="Link"/></a></li>
+</ul>
+
+<div id="start">
+    <div class="story">
+        <div class="center">
+            <h1>RWD介紹</h1>
+            <h2>使用Foundation</h2>
+            <img src="images/tablet.svg" alt=""/>
+            <img src="images/pc.svg" alt=""/>
+            <img src="images/mobile.svg" alt=""/>
+        </div>
+    </div>
+</div>
+
+<div id="intro-rwd">
+    <div class="story">
+        <div class="pc-blue"></div>
+        <div class="arrow"></div>
+        <div class="center">
+            <h1>R<em>esponsive</em></h1>
+            <h1>W<em>eb</em></h1>
+            <h1>D<em>esign</em></h1>
+        </div>
+    </div>
+</div>
+
+<div id="how-rwd">
+    <div class="left float-left">
+        <div class="center">
+            <h1>CSS</h1>
+            <p>@media only screen and </br> (min-width:600px){</br>....</br>}</p>
+            <div class="float-right"><p>DEMO</p></div>
+        </div>
+    </div>
+    <div class="right float-left">
+        <div class="center">
+            <h1>Javascript</h1>
+            <p>if(window.matchMedia</br>("(min-width:600px)")){</br>....</br>}</p>
+        </div>
+    </div>
+</div>
+
+<div id="use-framework">
+    <div class="story">
+        <div class="foundation-logo"></div>
+        <div class="center">
+            <h1>Foundation</h1>
+        </div>
+    </div>
+</div>
+
+<div id="intro-foundation">
+    <div class="story">
+       <div class="mobile-first"></div>
+       <div class="center">
+           <h1>Mobile First</h1>
+           <h1 class="important">由儉入奢易,由奢入儉難</h1>
+       </div>
+    </div>
+</div>
+
+<div id="browser-support">
+    <div class="story">
+        <a href="http://foundation.zurb.com/docs/compatibility.html" target="_blank"><div class="ie"></div></a>
+    </div>
+</div>
+
+<div id="css-foundation">
+    <div class="story">
+        <div class="center">
+            <div class="float-right">
+            <h1>How to use by CSS?</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="sass-foundation">
+    <div class="story">
+        <div class="center">
+            <div class="float-left">
+                <h1>How to organize by Sass?</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="intro-sass">
+<div class="story">
+    <div class="tree-man"></div>
+</div>
+</div>
+
+<div id="conclusion">
+    <div class="story">
+        <div class="center"><h1>使用Foundation</h1></div>
+        <div class="center"><a href="https://medium.com/frontend-and-beyond/8b3812c7007c" target="_blank">COMPARE</a></div>
+        <div class="float-left">
+            <h1>優點:</h1>
+            <div class="ul-container">
+                <ul>
+                    <li>好用的grid system</li>
+                    <li>以mobile為基礎</li>
+                    <li>彈性靈活操作</li>
+                    <li>透過Sass容易管理架構</li>
+                </ul>
+            </div>
+        </div>
+        <div class="float-right">
+            <h1>缺點:</h1>
+            <div class="ul-container">
+                <ul>
+                    <li>不支援IE8以下</li>
+                    <li>使用Sass較沒辦法直接去修改css檔案</li>
+                    <li>套件較少</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="use-icon">
+    <canvas id="mycanvas"></canvas>
+</div>
+
+</body>
+</html>
