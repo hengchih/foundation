@@ -1,0 +1,334 @@
+/*
+Plugin: jQuery Parallax
+Version 1.1.3
+Author: Ian Lunn
+Twitter: @IanLunn
+Author URL: http://www.ianlunn.co.uk/
+Plugin URL: http://www.ianlunn.co.uk/plugins/jquery-parallax/
+
+License: http://creativecommons.org/licenses/by-sa/3.0/ (Attribution Share Alike). Please attribute work to Ian Lunn simply by leaving these comments in the source code or if you'd prefer, place a link on your website to http://www.ianlunn.co.uk/.
+*/
+
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin: 0;
+	min-width: 980px;
+	padding: 0;
+}
+
+p{
+	margin: 0 0 20px 0;	
+}
+
+p, ul{
+	font-family:"Museo 900", Verdana,"Microsoft JhengHei","微軟正黑體", sans-serif;
+	font-size-adjust:0.488;
+	font-weight:200;
+	font-style:normal;
+}
+
+img{
+	border: 0;
+    border-radius: 10px;
+    border:3px solid #114F68;
+}
+
+h1, #pixels{
+	font-family:"Museo 900", Verdana,"Microsoft JhengHei","微軟正黑體", serif;
+	font-size-adjust:0.40;
+	font-weight:700;
+	font-style:normal;
+}
+
+h2{
+	font-family:"Beau Sans Pro Book", Verdana,"Microsoft JhengHei","微軟正黑體", sans-serif;
+	font-size-adjust:0.531;
+	font-weight:500;
+	font-style:normal;
+}
+
+#header h1, #pixels{
+	color: #48941A;
+}
+
+.float-left{
+	float: left;	
+	margin: 0 0 0 20px;
+}
+
+.float-right{
+	float: right;
+	margin: 0 20px 0 0;
+}
+
+.center{
+	font-size: 2.5em;
+	padding: 80px 0 0 0;
+	text-align: center;
+}
+
+#nav{
+	list-style: none;
+	position: fixed;
+	right: 20px;
+}
+
+#nav li{
+	margin: 0 0 15px 0;	
+}
+
+#header, #intro, #second{
+	width: 100%;
+}
+
+.story{
+	margin: 0 auto;
+	min-width: 980px;
+	overflow: auto;
+	width: 980px;
+}
+
+.story .float-left, .story .float-right{
+	padding: 100px 0 0 0;
+	position: relative;
+	width: 350px;	
+}
+h1 > em{
+    font-size: 25px;
+    font-weight: normal;
+}
+
+#start{
+    background:#114F68;
+    color: white;
+    height: 900px;
+}
+
+#intro-rwd{
+    background: white;
+    color: #114F68;
+    height: 900px;
+}
+
+#intro-rwd .arrow{
+    background: url(images/arrow.png) 50% 0 no-repeat fixed;
+    height: 2000px;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    width: 900px;
+    z-index: 200;
+}
+
+#how-rwd{
+    background: #114F68;
+    color: white;
+    height: 900px;
+}
+
+
+
+#how-rwd .left{
+    background: #114F68;
+    color: white ;
+    height: 900px;
+    width:48%;
+}
+
+#how-rwd .right{
+    background: white;
+    color: #114F68;
+    height: 900px;
+    width:49%;
+}
+
+#use-framework{
+    background: #114F68;
+    color: white;
+    height: 900px;
+}
+
+#use-framework .foundation-logo{
+    background: url(images/logo.jpg) 50% 0 no-repeat fixed;
+    height: 600px;
+    margin: 0 auto;
+    padding: 0;
+    position: absolute;
+    width: 900px;
+    z-index: 200;
+}
+
+#use-framework h1{
+    margin-top: 100px;
+}
+
+#use-framework .center{
+    margin-top: 120px;
+}
+
+#intro-foundation{
+    background: white;
+    color: #114F68;
+    height: 750px;
+}
+
+#intro-foundation .mobile-first{
+    background: url(images/mobile-first.png) 50% 0 no-repeat fixed;
+    height: 700px;
+    margin: 0 auto;
+    padding: 0px;
+    position: absolute;
+    width: 900px;
+    z-index: 200;
+    cursor: pointer;
+}
+
+#intro-foundation .important{
+    display: none;
+    overflow:hidden;
+}
+
+#browser-support{
+    background: #114F68;
+    color: white;
+    height: 900px;
+}
+
+#browser-support .ie{
+    background: url(images/ie.png) 50% 0 no-repeat fixed;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    position: absolute;
+    width: 900px;
+    z-index: 200;
+}
+
+.important{
+    position: relative;
+    background: rgba(255,255,255,0.9);
+    z-index: 300;
+    margin: 0 auto;
+}
+
+#css-foundation{
+    background: white;
+    color: #114F68;
+    height: 900px;
+}
+
+#sass-foundation{
+    background: #114F68;
+    color: white;
+    height: 900px;
+}
+
+#intro-sass{
+    background: url(images/tree.jpg) 50% 0 no-repeat #000000 fixed;
+    color: #002312;
+    height: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0;
+}
+
+.tree-man{
+    background: url(images/tree-man.png) 50% 0 no-repeat fixed;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    position: absolute;
+    width: 900px;
+    z-index: 200;
+}
+
+#conclusion{
+    font-family: "Museo 900", Verdana,"Microsoft JhengHei","微軟正黑體", serif;
+    background: white;
+    color:#114F68;
+    height: 700px;
+}
+
+#conclusion .float-left,#conclusion .float-right,#conclusion .center{
+    padding:0px;
+}
+
+#conclusion li{
+    font-family: "Museo 900", Verdana,"Microsoft JhengHei","微軟正黑體", serif;
+    font-size: 20px;
+    padding-top: 5px;
+    border-radius: 30px;
+}
+
+#conclusion .ul-container{
+    background: #ccc;
+    padding:10px;
+}
+
+#use-icon{
+    background: white;
+    color:#114F68;
+    height: 700px;
+}
+
+.pc{
+     background: url(images/pc.svg) 50% 0 no-repeat fixed;
+     height: 900px;
+     margin: 0 auto;
+     padding: 0px;
+     position: absolute;
+     width: 200px;
+     z-index: 400;
+ }
+
+.tablet{
+    background: url(images/tablet.svg) 50% 0 no-repeat fixed;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    position: absolute;
+    width: 200px;
+    z-index: 400;
+}
+
+.mobile{
+    background: url(images/mobile.svg) 50% 0 no-repeat fixed;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    position: absolute;
+    width: 200px;
+    z-index: 400;
+}
+
+.pc-blue{
+    background: url(images/pc-blue.svg) 50% 0 no-repeat fixed;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    position: absolute;
+    width: 200px;
+    z-index: 400;
+}
+
+.tablet-blue{
+    background: url(images/tablet-blue.svg) 50% 0 no-repeat fixed;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    position: absolute;
+    width: 200px;
+    z-index: 400;
+}
+
+.mobile-blue{
+    background: url(images/mobile-blue.svg) 50% 0 no-repeat fixed;
+    height: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    position: absolute;
+    width: 200px;
+    z-index: 400;
+}
